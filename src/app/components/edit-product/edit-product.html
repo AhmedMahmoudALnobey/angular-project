@@ -1,0 +1,33 @@
+<form style="width: 600px; height: 77vh;" [formGroup]="editForm" (submit)="editPro()">
+    <div class="mb-3">
+      <label for="productName" class="form-label">product Name</label>
+      <input type="text" class="form-control" formControlName="productName" aria-describedby="emailHelp">
+  </div>
+  <div class="d-flex justify-content-between">
+  <div class="mb-3">
+    <label for="productQuantity" class="form-label">product Quantity</label>
+    <input type="number" class="form-control" formControlName="productQuantity">
+  </div>
+  <div class="mb-3">
+    <label for="productPrice" class="form-label">product Price</label>
+    <input type="number" class="form-control" formControlName="productPrice">
+  </div>
+  </div>
+  <div class="d-flex justify-content-between">
+  <div class="mb-3">
+    <label for="productDetails" class="form-label">product Details</label>
+    <input type="text" class="form-control" formControlName="productDetails">
+  </div>
+  <div class="mb-3">
+    <label for="categoryId" class="form-label">category Id</label>
+    <select name="categoryId" formControlName="categoryId">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </div>
+  </div>
+  <button type="submit" class="w-100 btn btn-warning"> Update </button>
+</form>
+
+

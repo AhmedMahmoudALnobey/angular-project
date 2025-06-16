@@ -1,0 +1,39 @@
+<form style="width: 600px; height: 77vh;" [formGroup]="createForm" (submit)="insertPro()">
+  <div class="d-flex justify-content-between">
+    <div class="mb-3 me-4">
+      <label for="id" class="form-label">Product Id</label>
+      <input type="text" class="form-control" formControlName="id" aria-describedby="emailHelp" [(ngModel)]="product.id" name="id" [readonly]="isEdit">
+    </div>
+    <div class="mb-3">
+      <label for="productName" class="form-label">product Name</label>
+      <input type="text" class="form-control" formControlName="productName" aria-describedby="emailHelp" [(ngModel)]="product.productName" name="productName">
+    </div>
+  </div>
+  <div class="d-flex justify-content-between">
+  <div class="mb-3">
+    <label for="productQuantity" class="form-label">product Quantity</label>
+    <input type="number" class="form-control" formControlName="productQuantity" [(ngModel)]="product.productQuantity" name="productQuantity">
+  </div>
+  <div class="mb-3">
+    <label for="productPrice" class="form-label">product Price</label>
+    <input type="number" class="form-control" formControlName="productPrice" [(ngModel)]="product.productPrice" name="productPrice">
+  </div>
+  </div>
+  <div class="d-flex justify-content-between">
+  <div class="mb-3">
+    <label for="productDetails" class="form-label">product Details</label>
+    <input type="text" class="form-control" formControlName="productDetails" [(ngModel)]="product.productDetails" name="productDetails">
+  </div>
+  <div class="mb-3">
+    <label for="categoryId" class="form-label">Category</label>
+    <select name="categoryId" formControlName="categoryId" class="form-select" [(ngModel)]="product.categoryId">
+      <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+    </select>
+  </div>
+  </div>
+  <div class="mb-3">
+    <label for="productImgUrl" class="form-label">product Image</label>
+    <input type="file" class="form-control" formControlName="productImgUrl" [(ngModel)]="product.productImgUrl" name="productImgUrl">
+  </div>
+  <button type="submit" class="w-100 btn btn-primary" [disabled]="createForm.invalid">{{ isEdit ? 'Update Product' : 'Insert Product' }}</button>
+</form>

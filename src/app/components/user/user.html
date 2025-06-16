@@ -1,0 +1,53 @@
+<form style="width: 600px; height: 77vh;" (ngSubmit)="adduser()" #userForm="ngForm">
+  <div class="mb-3">
+    <label for="fname" class="form-label">Full Name</label>
+    <input type="text" class="form-control" id="fname" required minlength="5"
+      [(ngModel)]="user.fname" name="fName" #fname="ngModel"
+      [ngClass]="{'is-invalid': (fname.touched||fname.dirty)&&fname.invalid, 'is-valid':fname.valid}">
+    <div *ngIf="(fname.touched||fname.dirty)&&fname.invalid">
+      <div *ngIf="fname.errors?.['required']" class="alert alert-danger mt-1 p-1">Full Name is required.</div>
+      <div *ngIf="fname.errors?.['minlength']" class="alert alert-warning mt-1 p-1">Full Name must be at least 5 characters.</div>
+    </div>
+    <div *ngIf="fname.valid && (fname.touched||fname.dirty)" class="valid-feedback d-block">Looks good!</div>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" required
+      [(ngModel)]="user.email" name="email" #email="ngModel"
+      [ngClass]="{'is-invalid':(email.touched||email.dirty)&&email.invalid, 'is-valid':email.valid}">
+    <div *ngIf="(email.touched||email.dirty)&&email.invalid">
+      <div *ngIf="email.errors?.['required']" class="alert alert-danger mt-1 p-1">Email is required.</div>
+      <div *ngIf="email.errors?.['email']" class="alert alert-warning mt-1 p-1">Please enter a valid email address.</div>
+    </div>
+    <div *ngIf="email.valid && (email.touched||email.dirty)" class="valid-feedback d-block">Looks good!</div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Mobile Number(s)</label>
+    <div *ngFor="let mobile of user.mobiles; let i = index" class="input-group mb-2">
+      <input type="text" class="form-control" required pattern="^01[0-9]{9}$"
+        [(ngModel)]="user.mobiles[i]" [name]="'mobile' + i" #mobileField="ngModel"
+        [ngClass]="{'is-invalid': (mobileField.touched||mobileField.dirty)&&mobileField.invalid, 'is-valid':mobileField.valid}"
+        placeholder="Enter mobile number (e.g. 01XXXXXXXXX)">
+      <button *ngIf="i === user.mobiles.length - 1" type="button" class="btn btn-success ms-2" (click)="addMobile()">Add another mobile</button>
+      <button *ngIf="user.mobiles.length > 1" type="button" class="btn btn-danger ms-2" (click)="removeMobile(i)">Remove</button>
+      <div *ngIf="(mobileField.touched||mobileField.dirty)&&mobileField.invalid" class="w-100">
+        <div *ngIf="mobileField.errors?.['required']" class="alert alert-danger mt-1 p-1">Mobile number is required.</div>
+        <div *ngIf="mobileField.errors?.['pattern']" class="alert alert-warning mt-1 p-1">Mobile number must start with 01 and be 11 digits.</div>
+      </div>
+      <div *ngIf="mobileField.valid && (mobileField.touched||mobileField.dirty)" class="valid-feedback d-block">Looks good!</div>
+    </div>
+    <div class="form-text">Mobile number must start with 01 and be 11 digits.</div>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password" required minlength="6"
+      [(ngModel)]="user.password" name="password" #password="ngModel"
+      [ngClass]="{'is-invalid':(password.touched||password.dirty)&&password.invalid, 'is-valid':password.valid}">
+    <div *ngIf="(password.touched||password.dirty)&&password.invalid">
+      <div *ngIf="password.errors?.['required']" class="alert alert-danger mt-1 p-1">Password is required.</div>
+      <div *ngIf="password.errors?.['minlength']" class="alert alert-warning mt-1 p-1">Password must be at least 6 characters.</div>
+    </div>
+    <div *ngIf="password.valid && (password.touched||password.dirty)" class="valid-feedback d-block">Looks good!</div>
+  </div>
+  <button type="submit" class="w-100 btn btn-primary" [disabled]="userForm.invalid">Submit</button>
+</form>

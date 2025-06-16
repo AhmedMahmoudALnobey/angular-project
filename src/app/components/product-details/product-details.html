@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="data">
+      <div class="img">
+        <img [src]="product.productImgUrl" alt="">
+      </div>
+      <div class="details">
+        <h1>{{product.productName}}</h1>
+        <p>{{product.productDetails}}</p>
+      </div>
+  </div>
+  <div class="d-flex justify-content-around">
+    <button class="btn btn-light" (click)="previous()" [disabled]="currerntId==productIds[0]">
+      <i class="fa-solid fa-angles-left"></i>
+
+    </button>
+    <button class="btn btn-light" (click)="next()" [disabled]="currerntId==productIds[productIds.length-1]">
+      <i class="fa-solid fa-angles-right"></i>
+    </button>
+  </div>
+
+
+</div>
