@@ -31,7 +31,7 @@ export class Product implements OnInit {
     })
 
   }
-  clientName:string="Sherif"
+  clientName:string="ahmed elnobey"
   isProchasse:boolean=false
   cardId:string = ''
   totalPrice:number=0

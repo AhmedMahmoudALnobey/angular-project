@@ -84,27 +84,15 @@
   ],
   "users": [
     {
-      "id": "8e5e",
-      "fname": "sherif shoukry",
-      "email": "shoukrysherif5@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": "8dcd",
+      "id": "4444",
       "fname": "ahmed  mohamed",
       "email": "ahmedmohamed@gmail.com",
       "password": "123456"
     },
     {
-      "id": "25c9",
+      "id": "5555",
       "fname": "mostafa mohamed",
       "email": "mostafa@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": "0e0a",
-      "fname": "sherif shoukry",
-      "email": "shoukrysherif5@gmail.com",
       "password": "123456"
     }
   ]
